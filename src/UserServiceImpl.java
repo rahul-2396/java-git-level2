@@ -12,7 +12,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        return users;
+        return users.stream()
+                .sorted(Comparator.comparing(User::getName))
+                .toList();
     }
 
     @Override
