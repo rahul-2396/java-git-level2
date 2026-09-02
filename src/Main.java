@@ -55,8 +55,10 @@ public class Main {
         System.out.println("Filter -- HR Users : ");
         List<User> hrUsers = userService.filterByDepartment("HR");
 
-        for (User user : hrUsers) {
-            System.out.println(user);
+        if (hrUsers != null) {
+            for (User user : hrUsers) {
+                System.out.println(user);
+            }
         }
 
         System.out.println(("Sort users by name : "));
