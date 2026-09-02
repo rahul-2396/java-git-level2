@@ -47,11 +47,20 @@ public class Main {
             System.out.println(user);
         }
 
-        System.out.println(("Filter -- Finance Users : "));
+        System.out.println("Filter -- Finance Users : ");
         List<User> financeUsers = userService.filterByDepartment("Finance");
 
         for (User user : financeUsers) {
             System.out.println(user);
+        }
+
+        System.out.println("Filter -- HR Users : ");
+        List<User> hrUsers = userService.filterByDepartment("HR");
+
+        if (hrUsers != null) {
+            for (User user : hrUsers) {
+                System.out.println(user);
+            }
         }
 
         System.out.println(("Sort users by name : "));
