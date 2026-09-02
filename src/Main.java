@@ -4,6 +4,8 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Application started");
+
         Department engineering = new Department("Engineering", 1);
         Department finance = new Department("Finance", 2);
         Department hr = new Department("HR", 3);
