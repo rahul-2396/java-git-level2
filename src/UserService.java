@@ -9,4 +9,8 @@ public interface UserService {
     List<User> sortByName();
 
     Map<Department, List<User>> groupByDepartment();
+
+    List<User> getUsersByDepartment(int departmentId);
+
+    User createUser(User user, Department department);
 }

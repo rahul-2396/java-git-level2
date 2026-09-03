@@ -14,6 +14,9 @@ public class Main {
         User alcatraz = new User(2, "Alcatraz", finance, "alcatraz@abc.com");
         User alc = new User(3, "Alc", hr, "alc@abc.com");
         User alcat = new User(4, "Alcat", finance, "alcat@abc.com");
+        User alcata = new User(5, "Alcata", engineering, "alcata@abc.com");
+        User alct = new User(6, "Alct", finance, "alct@abc.com");
+        User alt = new User(7, "Alt", engineering, "alt@abc.com");
 
         List<User> users = new ArrayList<>();
 
@@ -21,14 +24,20 @@ public class Main {
         users.add(alcatraz);
         users.add(alc);
         users.add(alcat);
+        users.add(alcata);
+        users.add(alct);
+        users.add(alt);
 
         Account account1 = new Account(1, "rahul-23", rahul, true);
         Account account2 = new Account(2, "alcatraz-23", alcatraz, false);
         Account account3 = new Account(3, "alc-23", alc, false);
         Account account4 = new Account(4, "alcat-23", alcat, false);
+        Account account5 = new Account(5, "alcata-23", alcata, false);
+        Account account6 = new Account(6, "alct-23", alct, false);
+        Account account7 = new Account(7, "alt-23", alt, false);
 
-
-        System.out.println("Accounts : " + account1 + account2 + account3 + account4);
+        System.out.println("Accounts : " + account1 + account2 + account3 + account4 +
+                account5 + account6 + account7);
 
         UserService userService = new UserServiceImpl(users);
 
@@ -79,6 +88,31 @@ public class Main {
                     " -> " +
                     entry.getValue());
         }
+
+        List<Department> allDepartments = new ArrayList<>();
+
+        allDepartments.add(engineering);
+        allDepartments.add(finance);
+        allDepartments.add(hr);
+
+        DepartmentService departmentService = new DepartmentServiceImpl(allDepartments);
+
+        System.out.println("Showing all departments : ");
+        List<Department> departments = departmentService.getAllDepartments();
+
+        for (Department department : departments) {
+            System.out.println(department);
+        }
+
+        System.out.println("Show departments based on id : ");
+        Department departmentName = departmentService.getDepartmentById(3);
+
+        System.out.println(departmentName);
+
+        System.out.println("Get users by department id: ");
+        List<User> userOnList = userService.getUsersByDepartment(2);
+
+        System.out.println(userOnList);
     }
 }
 
