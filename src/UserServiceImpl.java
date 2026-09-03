@@ -13,11 +13,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        return new ArrayList<>(users);
+        return users;
     }
 
     @Override
-    public List<User> filterByDepartment(String departmentName) { //"I want to process these users as a stream."
+    public List<User> filterByDepartment(String departmentName) {
         return users.stream()
                 .filter(user ->
                         user.getDepartment()
@@ -37,5 +37,24 @@ public class UserServiceImpl implements UserService {
     public Map<Department, List<User>> groupByDepartment() {
         return users.stream()
                 .collect(Collectors.groupingBy(User::getDepartment));
+    }
+
+    @Override
+    public List<User> getUsersByDepartment(int departmentId) {
+        return users.stream()
+                .filter(user -> user.getDepartment().getId() == departmentId)
+                .toList();
+    }
+
+    @Override
+    public User createUser(User user, Department department) {
+        for (User existingUser : users) {
+            if (existingUser.getId() == user.getId()) {
+                System.out.println("User already exists");
+                return null;
+            }
+        }
+        users.add(user);
+        return user;
     }
 }
